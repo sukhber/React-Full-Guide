@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 //import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
@@ -87,7 +87,7 @@ state =
      }
 
 render() {
-  const style = {
+  /*const style = {
     backgroundColor: 'green',
     font: 'white',
     border: '1px solid blue',
@@ -96,10 +96,11 @@ render() {
     /*':hover': {
       backgroundColor: 'lightgreen',
       font: 'black'
-    }*/
-  };
+    }
+  };*/
 
   let persons = null;
+  let btnClass = '';
 
   if(this.state.showPersons) {
     persons = (
@@ -114,28 +115,29 @@ render() {
         })}
         </div>
     );
-    style.backgroundColor = 'red';
+    //style.backgroundColor = 'red';
     /*style[':hover'] = {
         backgroundColor: 'salmon',
         font: 'black'
     };*/
+    btnClass = classes.Red;
   }
   //let classes = ['red', 'bold'].join(' ');   // converting to a single string("red bold")
 
-  const classes = [];
+  const assignedClasses = [];
   if(this.state.persons.length <= 2) {
-    classes.push('red');                  //classes = ['red'];
+    assignedClasses.push(classes.red);                  //assignedClasses = ['red'];
   }
 
   if(this.state.persons.length <= 1) {
-    classes.push('bold');                //classes = ['red', 'bold'];
+    assignedClasses.push(classes.bold);                //assignedClasses = ['red', 'bold'];
   }
 
   return (
     //<StyleRoot>
-      <div className="App">
-        <p className={classes.join(' ')}> Har Har Modi!!!! Ghar Ghar Modi!!!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>Switch Persons</button>
+      <div className={classes.App}>
+        <p className={assignedClasses.join(' ')}> Har Har Modi!!!! Ghar Ghar Modi!!!</p>
+        <button className={btnClass}/*style={style}*/ onClick={this.togglePersonsHandler}>Switch Persons</button>
           {persons}
       </div>
     //</StyleRoot>
