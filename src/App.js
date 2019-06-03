@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+//import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -93,10 +93,10 @@ render() {
     border: '1px solid blue',
     padding: '8px',
     cursor: 'pointer',
-    ':hover': {
+    /*':hover': {
       backgroundColor: 'lightgreen',
       font: 'black'
-    }
+    }*/
   };
 
   let persons = null;
@@ -115,11 +115,10 @@ render() {
         </div>
     );
     style.backgroundColor = 'red';
-    style[':hover'] = {
+    /*style[':hover'] = {
         backgroundColor: 'salmon',
         font: 'black'
-    };
-
+    };*/
   }
   //let classes = ['red', 'bold'].join(' ');   // converting to a single string("red bold")
 
@@ -133,16 +132,18 @@ render() {
   }
 
   return (
-    <div className="App">
-      <p className={classes.join(' ')}> Har Har Modi!!!! Ghar Ghar Modi!!!</p>
-      <button style={style} onClick={this.togglePersonsHandler}>Switch Persons</button>
-        {persons}
-    </div>
+    //<StyleRoot>
+      <div className="App">
+        <p className={classes.join(' ')}> Har Har Modi!!!! Ghar Ghar Modi!!!</p>
+        <button style={style} onClick={this.togglePersonsHandler}>Switch Persons</button>
+          {persons}
+      </div>
+    //</StyleRoot>
   );
 }  
 
 }
-export default Radium(App);
+export default App;
 
 /*
 <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
